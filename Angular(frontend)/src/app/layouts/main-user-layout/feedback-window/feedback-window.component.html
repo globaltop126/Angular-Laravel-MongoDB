@@ -1,0 +1,84 @@
+<div class="pw__wrapper" style="z-index: 20 !important;" [ngClass]="{'is-visible': popupsService.visibleFeedbackWindow}">
+    <div class="pw__left-side">
+        <div class="pw__left-side-content" [ngClass]="{'is-visible': popupsService.visibleFeedbackWindow}">
+            <h2 class="pw__title">Feedback</h2>
+            <ul class="pw__nav-list">
+                <li class="pw__nav-item">
+                    <a class="pw__nav-link" (click)="popupsService.openFeedbackTab('bugs & errors')"
+                        [ngClass]="{'activeLink': popupsService.activeFeedbackTab === 'bugs & errors'}">
+                        <!-- <svg height="15" width="15">
+                            <use href="assets/img/sprite.svg#bug"></use>
+                        </svg> -->
+                        Bugs & Errors
+                    </a>
+                </li>
+                <li class="pw__nav-item">
+                    <a class="pw__nav-link" (click)="popupsService.openFeedbackTab('feature requests')"
+                        [ngClass]="{'activeLink': popupsService.activeFeedbackTab === 'feature requests'}">
+                        <!-- <svg height="15" width="15">
+                            <use href="assets/img/sprite.svg#plus"></use>
+                        </svg> -->
+                        Feature Requests
+                    </a>
+                </li>
+                <li class="pw__nav-item">
+                    <a class="pw__nav-link" (click)="popupsService.openFeedbackTab('questions')"
+                        [ngClass]="{'activeLink': popupsService.activeFeedbackTab === 'questions'}">
+                        <!-- <svg height="15" width="15">
+                            <use href="assets/img/sprite.svg#question"></use>
+                        </svg> -->
+                        Questions
+                    </a>
+                </li>
+            </ul>
+
+            <div class="pw__divider"></div>
+
+            <div class="fb-form__wrapper">
+
+                <h3 class="pw__title">{{popupsService.feedbackFormTitle}}</h3>
+                <form class="fb-form" name="bugs-err-form">
+
+                    <div class="fb-form__field">
+                        <label for="fb-form-bugs-title" class="fb-form__label">Title</label>
+                        <input class="fb-form__input" type="text" name="fb-form-bugs-title" id="fb-form-bugs-title"
+                            placeholder="Short, descriptive title">
+                    </div>
+
+                    <div class="fb-form__field">
+                        <label for="fb-form-bugs-message" class="fb-form__label">Details</label>
+                        <textarea class="fb-form__textarea" name="fb-form-bugs-message" id="fb-form-bugs-message"
+                            placeholder="Any additional details..."></textarea>
+                    </div>
+
+                    <div class="fb-form__field flex-row">
+                        <div class="fb-form__add-image">
+                            <input type="file" name="upload-image" id="upload-image" hidden="hidden">
+                            <label for="upload-image">
+                                <i class="bi bi-image"></i>
+                            </label>
+                        </div>
+                        <button class="fb-form__button--accent">Create post</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="pw__right-side">
+        <div class="pw__right-side-content" [ngClass]="{'is-visible': popupsService.visibleFeedbackWindow}">
+            <h2 class="pw__subtitle">{{popupsService.activeFeedbackTab}}</h2>
+
+            <app-bugs *ngIf="popupsService.activeFeedbackTab === 'bugs & errors'"></app-bugs>
+            <app-feature *ngIf="popupsService.activeFeedbackTab === 'feature requests'"></app-feature>
+            <app-questions *ngIf="popupsService.activeFeedbackTab === 'questions'"></app-questions>
+
+        </div>
+        <button class="pw__close-btn" [ngClass]="{'is-visible': popupsService.visibleFeedbackWindow}"
+            (click)="popupsService.visibleFeedbackWindow = false">
+            <svg width="18" height="18">
+                <use href="assets/img/sprite.svg#close-cross"></use>
+            </svg>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="fb-posts__content subcomment-content">
+
+    <!-- --- start post item ----- -->
+    <div class="fb-posts__post">
+        <div class="fb-posts__post-votes">
+            <i class="bi bi-caret-up-fill"></i>
+            <span class="votes-count">{{data.clickedComment?.votes}}</span>
+        </div>
+        <div class="fb-posts__post-link inactive">
+            <div class="fb-posts__post-body">
+                <h4 class="fb-posts__post-title">{{data.clickedComment?.title}}</h4>
+                <p class="fb-posts__post-type selected-comment">{{data.clickedComment?.status}}</p>
+                <p class="fb-posts__post-details selected-comment">{{data.clickedComment?.text}}</p>
+            </div>
+            <div class="fb-posts__post-comments">
+                <i class="bi bi-chat-left-text"></i>
+                <span class="comments-counter">{{data.clickedComment?.countSubcomments}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fb-posts__post-autor">
+        <div class="fb-posts__user-avatar"></div>
+        <div class="fb-posts__user-name">{{data.clickedComment?.author}}</div>
+    </div>
+
+    <div class="fb-posts__post-time">{{data.clickedComment?.date}}</div>
+    <!-- --- end post item ----- -->
+
+    <form class="fb-posts__subcomment-input-form">
+        <input type="text" class="fb-form__input fb-posts__subcomment-input" placeholder="Leave a comment"
+            (focus)="showDropdownField()" (blur)="hideDropdownField()">
+        <div class="fb-form__field flex-row dropdown-field showDropdownField"
+            [ngClass]="{'showDropdownField': visibleDropdownField}">
+            <div class="fb-form__add-image">
+                <input type="file" name="upload-image" id="upload-image" hidden="hidden">
+                <label for="upload-image">
+                    <i class="bi bi-image"></i>
+                </label>
+            </div>
+            <button class="fb-form__button--accent">Submit</button>
+        </div>
+    </form>
+
+    <div class="fb-posts__subcomment-control-buttons">
+        <span>Activity</span>
+        <button class="fb-sort-newest" type="button" (click)="chooseSubcommentSort('newest')"
+            [ngClass]="{'activeSort': activeSortSubcommentBtn === 'newest'}">Newest</button>
+        <button class="fb-sort-oldest" type="button" (click)="chooseSubcommentSort('oldest')"
+            [ngClass]="{'activeSort': activeSortSubcommentBtn === 'oldest'}">Oldest</button>
+    </div>
+
+
+    <div class="fb-posts__subcomment-container">
+        <div class="fb-posts__subcomment-item">
+            <div class="fb-posts__post-autor">
+                <div class="fb-posts__user-avatar"></div>
+                <div class="fb-posts__user-name">Juni Gustafsson</div>
+            </div>
+            <div class="fb-posts__subcomment-message">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Itaque, neque.</div>
+            <div class="fb-posts__post-time">July 09, 2022</div>
+        </div>
+
+        <div class="fb-posts__subcomment-item">
+            <div class="fb-posts__post-autor">
+                <div class="fb-posts__user-avatar"></div>
+                <div class="fb-posts__user-name">Katja Stenberg</div>
+            </div>
+            <div class="fb-posts__subcomment-message">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Itaque, neque.</div>
+            <div class="fb-posts__post-time">July 09, 2022</div>
+        </div>
+
+        <div class="fb-posts__subcomment-item">
+            <div class="fb-posts__post-autor">
+                <div class="fb-posts__user-avatar"></div>
+                <div class="fb-posts__user-name">Lova Claesson</div>
+            </div>
+            <div class="fb-posts__subcomment-message">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Itaque, neque.</div>
+            <div class="fb-posts__post-time">July 09, 2022</div>
+        </div>
+
+        <div class="fb-posts__subcomment-item admin-answer">
+            <div class="fb-posts__subcomment-admin-title">Admin answer:</div>
+            <div class="fb-posts__post-autor">
+                <div class="fb-posts__user-avatar">
+                    <div class="fb-posts__user-avatar--admin">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+                <div class="fb-posts__user-name">Gorm Henriksen</div>
+            </div>
+            <div class="fb-posts__subcomment-message">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Itaque, neque.</div>
+            <div class="fb-posts__post-time">July 09, 2022</div>
+        </div>
+    </div>
+</div>
